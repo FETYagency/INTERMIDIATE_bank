@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:string";
 @import url(reset.css);
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap');
 
@@ -57,7 +58,7 @@ header{
         justify-content: space-between;
         align-items: center;
     
-        >nav{
+        >.dNav{
             align-self: stretch;
     
             >a{
@@ -88,6 +89,46 @@ header{
                 }
             }
             
+        }
+        .mNav{
+            z-index: 98;
+            position: fixed;
+            inset: {
+                block: 80px auto; 
+                inline: 50% auto;
+            };
+            transform: translateX(-50%);
+            inline-size: min(327px, 95%);
+            background: #ffffff;
+            color: #2D314D; 
+            @extend %flex-cloumn;
+            align-items: center;
+            gap: math.div(24, $rem) * 1rem;
+
+            padding-block: math.div(32, $rem) * 1rem;
+
+            border-radius: 4px;
+            transition: all .3s ease;
+
+            >a{
+                text-decoration: none;
+                color: inherit;
+                &:hover{
+                    color: #30C88F;
+                }
+            }
+            &[data-state=close]{
+                opacity: 0;
+                pointer-events: none;
+            }
+            &[data-state=open]{
+                pointer-events: fill;
+                display: flex;
+                inset: {
+                    block: 100px auto; 
+                    inline: 50% auto;
+                };
+            }
         }
     
     }
@@ -417,10 +458,28 @@ footer{
 
 }
 
+.navBtn{
+    block-size: 11px;  
+    inline-size: 24px;
+    cursor: pointer;
+
+    display: none;
+}
+.overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 97;
+    background: linear-gradient(180deg, #2D314D 0%, rgba(45, 49, 77, 0.00) 100%);
+    opacity: 0;
+    pointer-events: none;
+    
+    transition: opacity .3s ease;
+}
+
 @media (width<700px) {
     .wrap{
         inline-size: min(327px,95%);
-        >nav{
+        >.dNav{
             display: none;
         }
         >.req_btn{
@@ -428,6 +487,9 @@ footer{
         }
     }
     
+    .navBtn{
+        display: block;
+    }
 
 
     

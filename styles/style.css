@@ -19,7 +19,7 @@ a {
   display: inline-block;
 }
 
-footer > .wrap > .CTA, footer > .wrap > nav > .assets, .articles-sec .cWrapp, .why-sec > .cWrapper {
+footer > .wrap > .CTA, footer > .wrap > nav > .assets, .articles-sec .cWrapp, .why-sec > .cWrapper, header .wrap .mNav {
   display: flex;
   flex-flow: column;
 }
@@ -49,10 +49,10 @@ header .wrap {
   justify-content: space-between;
   align-items: center;
 }
-header .wrap > nav {
+header .wrap > .dNav {
   align-self: stretch;
 }
-header .wrap > nav > a {
+header .wrap > .dNav > a {
   display: inline-flex;
   align-items: center;
   block-size: 100%;
@@ -68,11 +68,43 @@ header .wrap > nav > a {
   line-height: normal;
   letter-spacing: -0.108px;
 }
-header .wrap > nav > a:hover {
+header .wrap > .dNav > a:hover {
   border-image-source: linear-gradient(135deg, #33D35E 0%, #2AB6D9 100%);
 }
-header .wrap > nav > a:last-child {
+header .wrap > .dNav > a:last-child {
   margin: 0;
+}
+header .wrap .mNav {
+  z-index: 98;
+  position: fixed;
+  inset-block: 80px auto;
+  inset-inline: 50% auto;
+  transform: translateX(-50%);
+  inline-size: min(327px, 95%);
+  background: #ffffff;
+  color: #2D314D;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 2rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+header .wrap .mNav > a {
+  text-decoration: none;
+  color: inherit;
+}
+header .wrap .mNav > a:hover {
+  color: #30C88F;
+}
+header .wrap .mNav[data-state=close] {
+  opacity: 0;
+  pointer-events: none;
+}
+header .wrap .mNav[data-state=open] {
+  pointer-events: fill;
+  display: flex;
+  inset-block: 100px auto;
+  inset-inline: 50% auto;
 }
 
 .req_btn {
@@ -341,15 +373,35 @@ footer > .wrap > .CTA > .rights {
   opacity: 0.5;
 }
 
+.navBtn {
+  block-size: 11px;
+  inline-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 97;
+  background: linear-gradient(180deg, #2D314D 0%, rgba(45, 49, 77, 0) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
 @media (width < 700px) {
   .wrap {
     inline-size: min(327px, 95%);
   }
-  .wrap > nav {
+  .wrap > .dNav {
     display: none;
   }
   .wrap > .req_btn {
     display: none;
+  }
+  .navBtn {
+    display: block;
   }
   .intro {
     display: flex;

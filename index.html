@@ -19,7 +19,7 @@
       
       <img src="images/logo.svg">
 
-      <nav>
+      <nav class="dNav">
         <a href="javascript:void(0)">Home</a>
         <a href="javascript:void(0)">About</a>
         <a href="javascript:void(0)">Contact</a>
@@ -28,11 +28,25 @@
       </nav>   
   
       <button class="req_btn">Request Invite</button>
+
+      <div class="navBtn">
+        <img src="images/icon-hamburger.svg" alt="">
+      </div>
+      
+      <nav class="mNav" data-state="close">
+        <a href="javascript:void(0)">Home</a>
+        <a href="javascript:void(0)">About</a>
+        <a href="javascript:void(0)">Contact</a>
+        <a href="javascript:void(0)">Blog</a>
+        <a href="javascript:void(0)">Careers</a>
+      </nav>  
       
     </div>
 
        
   </header>
+
+  <div class="overlay"></div>
 
 
   <main class="mainContent">
@@ -303,5 +317,6 @@
     
   </footer>
   
+  <script src="script/index.js"></script>
 </body>
 </html>
