@@ -18,8 +18,7 @@ $rem : 16;
 body{
     font-family: var(--FF);
     background: #FAFAFA;
-    overflow-inline: hidden;
-    overflow-x: hidden;
+    min-block-size: 100vh;
 }
 
 a{
@@ -169,6 +168,7 @@ header{
 
 .mainContent{
     padding-block: math.div(80, $rem) * 1rem;
+    overflow: hidden
 }
 
 .intro{
